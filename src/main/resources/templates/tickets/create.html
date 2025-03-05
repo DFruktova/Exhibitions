@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Ticket</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Create Ticket</h1>
+    <form th:action="@{/tickets/create}" th:object="${ticket}" method="post">
+        <div class="form-group">
+            <label for="ID_exhibition">Exhibition ID</label>
+            <input type="number" class="form-control" id="ID_exhibition" th:field="*{ID_exhibition}" required="required">
+        </div>
+        <div class="form-group">
+            <label for="ID_visitor">Visitor ID</label>
+            <input type="number" class="form-control" id="ID_visitor" th:field="*{ID_visitor}" required="required">
+        </div>
+        <!-- <div class="form-group">
+            <label for="Sale_date">Sale Date</label>
+            <input type="date" class="form-control" id="Sale_date" th:field="*{Sale_date}" required="required">
+        </div>
+        Добавьте поля для Price, Count, Ticket_type, если они нужны для создания нового билета -->
+        <!-- Например:
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" step="0.01" class="form-control" id="price" th:field="*{exhibition.Price}" />
+        </div>
+         <div class="form-group">
+            <label for="count">Count</label>
+            <input type="number" class="form-control" id="count" th:field="*{Count}" />
+        </div>
+         <div class="form-group">
+            <label for="ticket_type">Ticket Type</label>
+            <input type="text"  class="form-control" id="ticket_type" th:field="*{Ticket_type}" />
+        </div>
+        -->
+        <button type="submit" class="btn btn-primary">Create Ticket</button>
+        <a href="/tickets" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

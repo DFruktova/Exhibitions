@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tickets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Tickets</h1>
+    <div th:replace="~{_fragments :: backToHomeButton}"></div>
+    <!-- Кнопка "Создать новый билет" вверху страницы -->
+    <a th:href="@{/tickets/create}" class="btn btn-success mb-3">Create New Ticket</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Exhibition ID</th>
+            <th>Visitor ID</th>
+            <th>Sale Date</th>
+            <th>Actions</th> <!-- Заголовок для столбца с кнопками -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ticket : ${tickets}">
+            <td th:text="${ticket.ID_ticket}"></td>
+            <td th:text="${ticket.ID_exhibition}"></td>
+            <td th:text="${ticket.ID_visitor}"></td>
+            <td th:text="${ticket.Sale_date}"></td>
+            <td>
+                <!-- Кнопки "Редактировать", "Удалить" и "Детали" в каждой строке -->
+                <a th:href="@{/tickets/update/{id}(id=${ticket.ID_ticket})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/tickets/delete/{id}(id=${ticket.ID_ticket})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ticket?')">Delete</a>
+                <a th:href="@{/tickets/{id}(id=${ticket.ID_ticket})}" class="btn btn-info btn-sm">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

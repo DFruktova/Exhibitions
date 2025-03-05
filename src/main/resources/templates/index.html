@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exhibitions App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .home-button {
+            display: block;
+            width: 300px; /* Задайте желаемую ширину кнопок */
+            margin: 10px auto; /* Центрирование и добавление отступов */
+            text-align: center; /* Центрирование текста внутри кнопки */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center mb-4">Главное меню</h1>
+    <p th:if="${message}" th:text="${message}" class="text-center"></p>
+
+    <div class="d-flex flex-column align-items-center"> <!-- Центрирование элементов по горизонтали -->
+        <a href="/exhibits" class="btn btn-primary home-button">Exhibits</a>
+        <a href="/exhibitions" class="btn btn-secondary home-button">Exhibitions</a>
+        <a href="/visitors" class="btn btn-success home-button">Visitors</a>
+        <a href="/tickets" class="btn btn-info home-button">Tickets</a>
+        <!-- Добавьте кнопки для других разделов, если нужно -->
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

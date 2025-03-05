@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ticket Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Ticket Details</h1>
+    <div th:if="${ticket}">
+        <dl class="row">
+            <dt class="col-sm-3">ID</dt>
+            <dd class="col-sm-9" th:text="${ticket.ID_ticket}"></dd>
+
+            <dt class="col-sm-3">Exhibition ID</dt>
+            <dd class="col-sm-9" th:text="${ticket.ID_exhibition}"></dd>
+
+            <dt class="col-sm-3">Visitor ID</dt>
+            <dd class="col-sm-9" th:text="${ticket.ID_visitor}"></dd>
+
+            <dt class="col-sm-3">Sale Date</dt>
+            <dd class="col-sm-9" th:text="${ticket.Sale_date}"></dd>
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9" th:text="${ticket.Price}"></dd>
+
+            <dt class="col-sm-3">Count</dt>
+            <dd class="col-sm-9" th:text="${ticket.Count}"></dd>
+
+            <dt class="col-sm-3">Ticket Type</dt>
+            <dd class="col-sm-9" th:text="${ticket.Ticket_type}"></dd>
+        </dl>
+    </div>
+    <div th:unless="${ticket}">
+        <p>Ticket not found.</p>
+    </div>
+    <a href="/tickets">Back to list</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

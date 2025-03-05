@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exhibition Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Exhibition Details</h1>
+    <div th:if="${exhibition}">
+        <dl class="row">
+            <dt class="col-sm-3">ID</dt>
+            <dd class="col-sm-9" th:text="${exhibition.ID_exhibition}"></dd>
+
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9" th:text="${exhibition.Name}"></dd>
+
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9" th:text="${exhibition.Description}"></dd>
+
+            <dt class="col-sm-3">Start Date</dt>
+            <dd class="col-sm-9" th:text="${exhibition.Start_date}"></dd>
+
+            <dt class="col-sm-3">End Date</dt>
+            <dd class="col-sm-9" th:text="${exhibition.End_date}"></dd>
+
+            <dt class="col-sm-3">Theme</dt>
+            <dd class="col-sm-9" th:text="${exhibition.Theme}"></dd>
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9" th:text="${exhibition.Price}"></dd>
+        </dl>
+    </div>
+    <div th:unless="${exhibition}">
+        <p>Exhibition not found.</p>
+    </div>
+    <a href="/exhibitions">Back to list</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

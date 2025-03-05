@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exhibitions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Exhibitions</h1>
+    <div th:replace="~{_fragments :: backToHomeButton}"></div>
+    <a th:href="@{/exhibitions/create}" class="btn btn-success mb-3">Create New Exhibition</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Theme</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="exhibition : ${exhibitions}">
+            <td th:text="${exhibition.ID_exhibition}"></td>
+            <td th:text="${exhibition.Name}"></td>
+            <td th:text="${exhibition.Description}"></td>
+            <td th:text="${exhibition.Start_date}"></td>
+            <td th:text="${exhibition.End_date}"></td>
+            <td th:text="${exhibition.Theme}"></td>
+            <td th:text="${exhibition.Price}"></td>
+            <td>
+                <a th:href="@{/exhibitions/update/{id}(id=${exhibition.ID_exhibition})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/exhibitions/delete/{id}(id=${exhibition.ID_exhibition})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this exhibition?')">Delete</a>
+                <a th:href="@{/exhibitions/{id}(id=${exhibition.ID_exhibition})}">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

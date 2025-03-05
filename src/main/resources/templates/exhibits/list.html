@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exhibits</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{_fragments :: backToHomeButton}"></div>
+
+    <h1>Exhibits</h1>
+
+    <form th:action="@{/exhibits/filter}" method="get">
+        <div class="form-row align-items-center">
+            <div class="form-group col-md-2">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" th:value="${param.name}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="author">Author:</label>
+                <input type="text" class="form-control" id="author" name="author" th:value="${param.author}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="fabric">Fabric:</label>
+                <input type="text" class="form-control" id="fabric" name="fabric" th:value="${param.fabric}">
+            </div>
+            <div class="form-group col-md-1">
+                <label for="createYear">Create Year:</label>
+                <input type="number" class="form-control" id="createYear" name="createYear" th:value="${param.createYear}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="idExhibition">ID Exhibition:</label>
+                <input type="number" class="form-control" id="idExhibition" name="idExhibition" th:value="${param.idExhibition}">
+            </div>
+            <div class="form-group col-md-1">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <a th:href="@{/exhibits/create}" class="btn btn-success mb-3">Create New Exhibit</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Fabric</th>
+            <th>Create Year</th>
+            <th>ID Exhibition</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="exhibit : ${exhibits}">
+            <td th:text="${exhibit.ID_exhibit}"></td>
+            <td th:text="${exhibit.Name}"></td>
+            <td th:text="${exhibit.Description}"></td>
+            <td th:text="${exhibit.Author}"></td>
+            <td th:text="${exhibit.Fabric}"></td>
+            <td th:text="${exhibit.Create_year}"></td>
+            <td th:text="${exhibit.ID_exhibition}"></td>
+            <td>
+                <a th:href="@{/exhibits/update/{id}(id=${exhibit.ID_exhibit})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/exhibits/delete/{id}(id=${exhibit.ID_exhibit})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this exhibit?')">Delete</a>
+                <a th:href="@{/exhibits/{id}(id=${exhibit.ID_exhibit})}" class="btn btn-info btn-sm">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
